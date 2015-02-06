@@ -10,9 +10,9 @@ namespace HR.Zip.API
 {
     class apiZip
     {
-        public void CompressFilesWithZip(string sourcefile, string zipFile, string passWord,string zipFlodername)
+        public bool CompressFilesWithZip(string sourcefile, string zipFile, string passWord,string zipFlodername)
         {
-            if (Directory.Exists(zipFile))
+            if (File.Exists(zipFile))
             {
                 File.Delete(zipFile);
             }
@@ -24,9 +24,10 @@ namespace HR.Zip.API
                     zip.TempFileFolder = Path.GetTempPath();                    
                     zip.AddFile(sourcefile,zipFlodername);
                 }
-                catch { zip.Dispose(); }
+                catch { zip.Dispose(); return false; }
                 zip.Save();
                 zip.Dispose();
+                return true;
 
             }
         }

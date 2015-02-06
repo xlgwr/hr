@@ -46,11 +46,11 @@ namespace HR.Zip.EF
         [StringLength(50)]
         public string u_str2 { get; set; }
 
-        public decimal? u_dec1 { get; set; }
+        public decimal u_dec1 { get; set; }
 
-        public decimal? u_dec2 { get; set; }
+        public decimal u_dec2 { get; set; }
 
-        public DateTime? updateDate { get; set; }
+        public DateTime updateDate { get; set; }
 
         [StringLength(50)]
         public string createby { get; set; }

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HRMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lk2ccTo = new System.Windows.Forms.LinkLabel();
+            this.lk0To = new System.Windows.Forms.LinkLabel();
             this.btn1Files = new System.Windows.Forms.Button();
             this.btn0Send = new System.Windows.Forms.Button();
             this.txt3Addtchedfilepath = new System.Windows.Forms.TextBox();
@@ -38,12 +41,14 @@
             this.txt1ToCC = new System.Windows.Forms.TextBox();
             this.txt0To = new System.Windows.Forms.TextBox();
             this.txt5Body = new System.Windows.Forms.RichTextBox();
-            this.lk0To = new System.Windows.Forms.LinkLabel();
-            this.lk2ccTo = new System.Windows.Forms.LinkLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tool0Msg = new System.Windows.Forms.ToolStripStatusLabel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -58,11 +63,33 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt1ToCC);
             this.groupBox1.Controls.Add(this.txt0To);
-            this.groupBox1.Location = new System.Drawing.Point(12, 0);
+            this.groupBox1.Location = new System.Drawing.Point(12, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(671, 176);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lk2ccTo
+            // 
+            this.lk2ccTo.AutoSize = true;
+            this.lk2ccTo.Location = new System.Drawing.Point(102, 65);
+            this.lk2ccTo.Name = "lk2ccTo";
+            this.lk2ccTo.Size = new System.Drawing.Size(65, 12);
+            this.lk2ccTo.TabIndex = 11;
+            this.lk2ccTo.TabStop = true;
+            this.lk2ccTo.Text = "抄送(&C)...";
+            this.lk2ccTo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lk2ccTo_LinkClicked);
+            // 
+            // lk0To
+            // 
+            this.lk0To.AutoSize = true;
+            this.lk0To.Location = new System.Drawing.Point(90, 32);
+            this.lk0To.Name = "lk0To";
+            this.lk0To.Size = new System.Drawing.Size(77, 12);
+            this.lk0To.TabIndex = 10;
+            this.lk0To.TabStop = true;
+            this.lk0To.Text = "收件人(&O)...";
+            this.lk0To.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lk0To_LinkClicked);
             // 
             // btn1Files
             // 
@@ -104,7 +131,6 @@
             // txt2Subject
             // 
             this.txt2Subject.Location = new System.Drawing.Point(168, 96);
-            this.txt2Subject.Multiline = true;
             this.txt2Subject.Name = "txt2Subject";
             this.txt2Subject.Size = new System.Drawing.Size(497, 21);
             this.txt2Subject.TabIndex = 5;
@@ -121,7 +147,6 @@
             // txt1ToCC
             // 
             this.txt1ToCC.Location = new System.Drawing.Point(168, 62);
-            this.txt1ToCC.Multiline = true;
             this.txt1ToCC.Name = "txt1ToCC";
             this.txt1ToCC.Size = new System.Drawing.Size(497, 21);
             this.txt1ToCC.TabIndex = 3;
@@ -129,44 +154,23 @@
             // txt0To
             // 
             this.txt0To.Location = new System.Drawing.Point(168, 29);
-            this.txt0To.Multiline = true;
             this.txt0To.Name = "txt0To";
             this.txt0To.Size = new System.Drawing.Size(497, 21);
             this.txt0To.TabIndex = 1;
             // 
             // txt5Body
             // 
-            this.txt5Body.Location = new System.Drawing.Point(12, 182);
+            this.txt5Body.Location = new System.Drawing.Point(12, 199);
             this.txt5Body.Name = "txt5Body";
             this.txt5Body.Size = new System.Drawing.Size(671, 144);
             this.txt5Body.TabIndex = 1;
             this.txt5Body.Text = "";
             // 
-            // lk0To
-            // 
-            this.lk0To.AutoSize = true;
-            this.lk0To.Location = new System.Drawing.Point(90, 32);
-            this.lk0To.Name = "lk0To";
-            this.lk0To.Size = new System.Drawing.Size(77, 12);
-            this.lk0To.TabIndex = 10;
-            this.lk0To.TabStop = true;
-            this.lk0To.Text = "收件人(&O)...";
-            // 
-            // lk2ccTo
-            // 
-            this.lk2ccTo.AutoSize = true;
-            this.lk2ccTo.Location = new System.Drawing.Point(102, 65);
-            this.lk2ccTo.Name = "lk2ccTo";
-            this.lk2ccTo.Size = new System.Drawing.Size(65, 12);
-            this.lk2ccTo.TabIndex = 11;
-            this.lk2ccTo.TabStop = true;
-            this.lk2ccTo.Text = "抄送(&C)...";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tool0Msg});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 329);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 351);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(695, 22);
             this.statusStrip1.TabIndex = 2;
@@ -178,21 +182,53 @@
             this.tool0Msg.Name = "tool0Msg";
             this.tool0Msg.Size = new System.Drawing.Size(0, 17);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolTToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(695, 25);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolTToolStripMenuItem
+            // 
+            this.toolTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userUToolStripMenuItem});
+            this.toolTToolStripMenuItem.Name = "toolTToolStripMenuItem";
+            this.toolTToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
+            this.toolTToolStripMenuItem.Text = "Tool(&T)";
+            // 
+            // userUToolStripMenuItem
+            // 
+            this.userUToolStripMenuItem.Name = "userUToolStripMenuItem";
+            this.userUToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.userUToolStripMenuItem.Text = "User(&U)";
+            this.userUToolStripMenuItem.Click += new System.EventHandler(this.userUToolStripMenuItem_Click);
+            // 
             // HRMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 351);
+            this.ClientSize = new System.Drawing.Size(695, 373);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.txt5Body);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "HRMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HRMain";
+            this.Load += new System.EventHandler(this.HRMain_Load);
+            this.Resize += new System.EventHandler(this.HRMain_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,5 +250,8 @@
         private System.Windows.Forms.LinkLabel lk0To;
         private System.Windows.Forms.StatusStrip statusStrip1;
         protected internal System.Windows.Forms.ToolStripStatusLabel tool0Msg;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userUToolStripMenuItem;
     }
 }

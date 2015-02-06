@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>t %284%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
@@ -79,10 +82,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\apioutlook.cs" />
+    <Compile Include="API\apisharp.cs" />
     <Compile Include="API\apiZip.cs" />
     <Compile Include="EF\hrlog.cs" />
     <Compile Include="EF\HR_Zip.cs" />
+    <Compile Include="EF\user_mstrView.cs" />
     <Compile Include="EF\user_mstr.cs" />
+    <Compile Include="GetEmailfrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetEmailfrm.Designer.cs">
+      <DependentUpon>GetEmailfrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HRMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +108,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserFrm.Designer.cs">
+      <DependentUpon>UserFrm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GetEmailfrm.resx">
+      <DependentUpon>GetEmailfrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HRMain.resx">
       <DependentUpon>HRMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +132,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserFrm.resx">
+      <DependentUpon>UserFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="attach\test.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -131,6 +154,7 @@
     <Content Include="attach\test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="t %284%29.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,23 +15,24 @@ namespace HR.Zip.API
         Outlook.Application app;
         Outlook.MailItem mail;
         Outlook.NameSpace ns;
+
         public apioutlook()
         {
             app = new Outlook.Application();
             ns = app.GetNamespace("mapi");
-            mail = (Outlook.MailItem)app.CreateItem(Outlook.OlItemType.olMailItem);
         }
-        public void sendmail(string mailto, string mailcc, string strSubject, string strbody, string[] tmpAttachFilePath, string msg)
+        public bool sendmail(string mailto, string mailcc, string strSubject, string strbody, string[] tmpAttachFilePath, string msg)
         {
             try
             {
+                mail = (Outlook.MailItem)app.CreateItem(Outlook.OlItemType.olMailItem);
                 //ns.Logon("ling.xie", "", false, true);
                 mail.To = mailto;
                 mail.CC = mailcc;
 
                 mail.Subject = strSubject;
 
-                mail.Body = strbody;
+                mail.HTMLBody = strbody;
 
                 foreach (var item in tmpAttachFilePath)
                 {
@@ -39,12 +40,13 @@ namespace HR.Zip.API
                 }
 
                 mail.Send();
-
+                return true;
                 //ns.Logoff();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
         public void cbinitAddLists(ComboBox cb)
@@ -68,18 +70,14 @@ namespace HR.Zip.API
 
             }
         }
-        public void dgvaddEmailUsernameByExchange(DataGridView dgv)
+        public void dgvaddEmailUsernameByExchange()
         {
             var exchange = ns.GetGlobalAddressList();
 
             foreach (Outlook.AddressEntry item in exchange.AddressEntries)
             {
                 Outlook.ExchangeUser exuser = item.GetExchangeUser();
-                DataGridViewRow dgvr = new DataGridViewRow();
-                dgvr.CreateCells(dgv);
-                dgvr.Cells[0].Value = exuser.Name;
-                dgvr.Cells[1].Value = exuser.PrimarySmtpAddress;
-                dgv.Rows.Add(dgvr);
+                Program._exuser.Add(exuser);
             }
         }
         public void dgvGetSMTPAddressForRecipients(DataGridView dgv)
@@ -124,7 +122,7 @@ namespace HR.Zip.API
                             dgvr.Cells[1].Value = exuser.PrimarySmtpAddress;
                             dgv.Rows.Add(dgvr);
                         }
-                        else if(item.AddressEntryUserType== Outlook.OlAddressEntryUserType.olOutlookContactAddressEntry)
+                        else if (item.AddressEntryUserType == Outlook.OlAddressEntryUserType.olOutlookContactAddressEntry)
                         {
                             Outlook.ContactItem exuser = item.GetContact();
                             DataGridViewRow dgvr = new DataGridViewRow();
