@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HR.Zip.API;
+using HR.Zip.Properties;
 
 namespace HR.Zip
 {
@@ -46,9 +47,10 @@ namespace HR.Zip
         void initset()
         {
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point { X = Control.MousePosition.X - this.Width / 3, Y = Control.MousePosition.Y + 25 };
+            this.Location = new Point { X = Control.MousePosition.X - this.Width / 5, Y = Control.MousePosition.Y + 25 };
             this.Resize += GetEmailfrm_Resize;
             this.AcceptButton = button1;
+            this.Icon = Resources.t__3_;
             //
             apiol = new apioutlook();
 

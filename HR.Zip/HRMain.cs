@@ -52,6 +52,7 @@ namespace HR.Zip
         {
             _guserMstrList = new List<user_mstr>();
             _gzipfilepath = new List<savezipfile>();
+            var tmpmsg = "";
             #region check
             if (string.IsNullOrEmpty(txt0To.Text))
             {
@@ -86,7 +87,8 @@ namespace HR.Zip
                 txt0To.Focus();
                 return;
             }
-            tool0Msg.Text = "开始发送.";
+            tmpmsg = "开始发送.";
+            tool0Msg.Text = tmpmsg;
             btn0Send.Enabled = false;
             foreach (var item in tmpOemail)
             {
@@ -130,7 +132,8 @@ namespace HR.Zip
                             _gzipfilepath.Add(new savezipfile(userid.userID, tmpitemzip));
                             //send mail
                             var tmpfilepath = new string[] { tmpitemzip };
-                            tool0Msg.Text = "正在发送: " + userid.userID + "," + userid.name + "," + userid.email + " 的邮件.";
+                            tmpmsg = "正在发送: " + userid.userID + "," + userid.name + "," + userid.email + " 的邮件.";
+                            tool0Msg.Text = tmpmsg;
                             apiol.sendmail(userid.email, txt1ToCC.Text, txt2Subject.Text, txt5Body.Text, tmpfilepath, "Ok");
                         }
                     }
@@ -138,7 +141,9 @@ namespace HR.Zip
                 //filelist_al.Add(item.FullName.ToString());
 
             }
-            tool0Msg.Text = "发送完成.";
+            tmpmsg = "发送完成.";
+            tool0Msg.Text = tmpmsg;
+            MessageBox.Show(tmpmsg);
             btn0Send.Enabled = true;
             #endregion
         }
