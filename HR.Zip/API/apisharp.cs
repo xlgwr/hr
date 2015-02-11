@@ -175,6 +175,10 @@ namespace HR.Zip.API
             var dwo = (DgvObject<T>)o;
             try
             {
+                if (dwo._dgv.RowCount<=0)
+                {
+                    return;
+                }
                 currmsg = "Start init excel file name and path.";
                 setControlText(dwo._tform, dwo._cl, currmsg, true, true);
 
