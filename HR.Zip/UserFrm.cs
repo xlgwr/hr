@@ -406,14 +406,14 @@ namespace HR.Zip
 
         private void btn0GetEmail_Click(object sender, EventArgs e)
         {
-            GetEmailfrm<UserFrm> gef = new GetEmailfrm<UserFrm>(this, txt2Email, 1, false);
+            GetEmailfrm<UserFrm> gef = new GetEmailfrm<UserFrm>(this, txt2Email, tool0Msg, 1, false);
             gef.ShowDialog();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GetEmailfrm<UserFrm> gef = new GetEmailfrm<UserFrm>(this, txt1UserName, 0, false);
+            GetEmailfrm<UserFrm> gef = new GetEmailfrm<UserFrm>(this, txt1UserName, tool0Msg, 0, false);
             gef.ShowDialog();
         }
     }

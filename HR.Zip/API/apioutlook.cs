@@ -70,7 +70,7 @@ namespace HR.Zip.API
 
             }
         }
-        public void dgvaddEmailUsernameByExchange()
+        public void dgvaddEmailUsernameByExchange(object o)
         {
             var exchange = ns.GetGlobalAddressList();
 
@@ -79,6 +79,7 @@ namespace HR.Zip.API
                 Outlook.ExchangeUser exuser = item.GetExchangeUser();
                 Program._exuser.Add(exuser);
             }
+            Program._exuserThreadinitover = true;
         }
         public void dgvGetSMTPAddressForRecipients(DataGridView dgv)
         {

@@ -15,7 +15,7 @@ namespace HR.Zip
 {
     static class Program
     {
-
+        public static bool _exuserThreadinitover;
         public static IList<Outlook.ExchangeUser> _exuser;
         /// <summary>
         /// The main entry point for the application.
@@ -26,9 +26,10 @@ namespace HR.Zip
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            _exuserThreadinitover = false;
             _exuser = new List<Outlook.ExchangeUser>();
 
-            Application.Run(new HRMain());
+            Application.Run(new SendEmailByXls());
         }
     }
 }

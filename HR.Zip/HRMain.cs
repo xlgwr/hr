@@ -14,6 +14,9 @@ using HR.Zip.API;
 using HR.Zip.EF;
 using System.IO;
 
+
+using System.Threading;
+
 namespace HR.Zip
 {
     public partial class HRMain : Form
@@ -165,8 +168,9 @@ namespace HR.Zip
         {
             this.WindowState = FormWindowState.Maximized;
             initwith();
-        }
 
+            ThreadPool.QueueUserWorkItem(apiol.dgvaddEmailUsernameByExchange, "");
+        }
         private void HRMain_Resize(object sender, EventArgs e)
         {
             initwith();
@@ -182,13 +186,13 @@ namespace HR.Zip
 
         private void lk0To_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            GetEmailfrm<HRMain> gef = new GetEmailfrm<HRMain>(this, txt0To, 1, true);
+            GetEmailfrm<HRMain> gef = new GetEmailfrm<HRMain>(this, txt0To,tool0Msg, 1, true);
             gef.ShowDialog();
         }
 
         private void lk2ccTo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            GetEmailfrm<HRMain> gef = new GetEmailfrm<HRMain>(this, txt1ToCC, 1, true);
+            GetEmailfrm<HRMain> gef = new GetEmailfrm<HRMain>(this, txt1ToCC,tool0Msg, 1, true);
             gef.ShowDialog();
         }
     }

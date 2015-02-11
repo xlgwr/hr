@@ -12,11 +12,13 @@ using HR.Zip.Properties;
 namespace HR.Zip
 {
     public partial class GetEmailfrm<T> : Form
+        where T : Form
     {
 
         apioutlook apiol;
         T _userform;
         TextBox _tb;
+        ToolStripStatusLabel _toolmsg;
         int _getflag;
         bool _isappend;
 
@@ -31,12 +33,13 @@ namespace HR.Zip
         {
 
         }
-        public GetEmailfrm(T userform, TextBox tb, int getflag, bool isappend)
+        public GetEmailfrm(T userform, TextBox tb, ToolStripStatusLabel toolmsg, int getflag, bool isappend)
         {
             InitializeComponent();
 
             _userform = userform;
             _tb = tb;
+            _toolmsg = toolmsg;
             _getflag = getflag;
             _isappend = isappend;
             //
@@ -64,10 +67,22 @@ namespace HR.Zip
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.CellClick += dataGridView1_CellClick;
 
+            while (!Program._exuserThreadinitover)
+            {
+                _userform.Invoke(new Action(delegate()
+                {
+                    _toolmsg.Text = "正在加载中...";
+                }));
+            }
+            _userform.Invoke(new Action(delegate()
+            {
+                _toolmsg.Text = "加载成功...";
+            }));
             if (Program._exuser.Count <= 0)
             {
-                apiol.dgvaddEmailUsernameByExchange();
+                apiol.dgvaddEmailUsernameByExchange("dd");
             }
+
             foreach (var item in Program._exuser)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();

@@ -249,9 +249,9 @@
         private System.Windows.Forms.LinkLabel lk2ccTo;
         private System.Windows.Forms.LinkLabel lk0To;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        protected internal System.Windows.Forms.ToolStripStatusLabel tool0Msg;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userUToolStripMenuItem;
+        public System.Windows.Forms.ToolStripStatusLabel tool0Msg;
     }
 }
