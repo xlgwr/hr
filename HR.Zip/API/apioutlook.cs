@@ -12,7 +12,7 @@ namespace HR.Zip.API
 
     class apioutlook
     {
-        Outlook.Application app;
+        public Outlook.Application app;
         Outlook.MailItem mail;
         Outlook.NameSpace ns;
 

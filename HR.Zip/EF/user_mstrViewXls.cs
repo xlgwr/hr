@@ -28,5 +28,8 @@ namespace HR.Zip.EF
 
         [StringLength(256)]
         public string cc_hr { get; set; }
+
+        [StringLength(512)]
+        public string attach { get; set; }
     }
 }

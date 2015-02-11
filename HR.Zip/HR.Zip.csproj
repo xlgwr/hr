@@ -90,6 +90,7 @@
     <Compile Include="API\apioutlook.cs" />
     <Compile Include="API\apisharp.cs" />
     <Compile Include="API\apiZip.cs" />
+    <Compile Include="API\DgvObject.cs" />
     <Compile Include="EF\hrlog.cs" />
     <Compile Include="EF\HR_Zip.cs" />
     <Compile Include="EF\user_mstrViewXls.cs" />
